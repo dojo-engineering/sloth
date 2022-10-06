@@ -174,11 +174,15 @@ sum(count_over_time({{.metric}}{{.filter}}[{{.window}}]))
 	return &rulefmt.Rule{
 		Record: slo.GetSLIErrorMetric(window),
 		Expr:   b.String(),
-		// The SLO labels will be obtained from the source SLI recording rule.
-		// We only need to set the window.
-		Labels: map[string]string{
-			sloWindowLabelName: strWindow,
-		},
+		// Since we override the SLO labels on the modified query
+		// we need to keep all original labels.
+		Labels: mergeLabels(
+			slo.GetSLOIDPromLabels(),
+			map[string]string{
+				sloWindowLabelName: strWindow,
+			},
+			slo.Labels,
+		),
 	}, nil
 }
 
