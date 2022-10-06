@@ -92,9 +92,9 @@ groups:
       sloth_window: 3d
   - record: slo:sli_error:ratio_rate1w
     expr: |
-      sum_over_time(slo:sli_error:ratio_rate5m{sloth_id="svc01-slo1", sloth_service="svc01", sloth_slo="slo1"}[1w])
+      sum(sum_over_time(slo:sli_error:ratio_rate5m{sloth_id="svc01-slo1", sloth_service="svc01", sloth_slo="slo1"}[1w]))
       / ignoring (sloth_window)
-      count_over_time(slo:sli_error:ratio_rate5m{sloth_id="svc01-slo1", sloth_service="svc01", sloth_slo="slo1"}[1w])
+      sum(count_over_time(slo:sli_error:ratio_rate5m{sloth_id="svc01-slo1", sloth_service="svc01", sloth_slo="slo1"}[1w]))
     labels:
       sloth_window: 1w
 - name: sloth-slo-meta-recordings-svc01-slo1
@@ -309,9 +309,9 @@ groups:
       sloth_window: 3d
   - record: slo:sli_error:ratio_rate1w
     expr: |
-      sum_over_time(slo:sli_error:ratio_rate5m{sloth_id="svc01-slo02", sloth_service="svc01", sloth_slo="slo02"}[1w])
+      sum(sum_over_time(slo:sli_error:ratio_rate5m{sloth_id="svc01-slo02", sloth_service="svc01", sloth_slo="slo02"}[1w]))
       / ignoring (sloth_window)
-      count_over_time(slo:sli_error:ratio_rate5m{sloth_id="svc01-slo02", sloth_service="svc01", sloth_slo="slo02"}[1w])
+      sum(count_over_time(slo:sli_error:ratio_rate5m{sloth_id="svc01-slo02", sloth_service="svc01", sloth_slo="slo02"}[1w]))
     labels:
       sloth_window: 1w
 - name: sloth-slo-meta-recordings-svc01-slo02

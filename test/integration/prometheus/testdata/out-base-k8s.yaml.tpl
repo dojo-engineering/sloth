@@ -101,9 +101,9 @@ spec:
         sloth_window: 3d
       record: slo:sli_error:ratio_rate3d
     - expr: |
-        sum_over_time(slo:sli_error:ratio_rate5m{sloth_id="svc01-slo1", sloth_service="svc01", sloth_slo="slo1"}[30d])
+        sum(sum_over_time(slo:sli_error:ratio_rate5m{sloth_id="svc01-slo1", sloth_service="svc01", sloth_slo="slo1"}[30d]))
         / ignoring (sloth_window)
-        count_over_time(slo:sli_error:ratio_rate5m{sloth_id="svc01-slo1", sloth_service="svc01", sloth_slo="slo1"}[30d])
+        sum(count_over_time(slo:sli_error:ratio_rate5m{sloth_id="svc01-slo1", sloth_service="svc01", sloth_slo="slo1"}[30d]))
       labels:
         sloth_window: 30d
       record: slo:sli_error:ratio_rate30d
@@ -318,9 +318,9 @@ spec:
         sloth_window: 3d
       record: slo:sli_error:ratio_rate3d
     - expr: |
-        sum_over_time(slo:sli_error:ratio_rate5m{sloth_id="svc01-slo02", sloth_service="svc01", sloth_slo="slo02"}[30d])
+        sum(sum_over_time(slo:sli_error:ratio_rate5m{sloth_id="svc01-slo02", sloth_service="svc01", sloth_slo="slo02"}[30d]))
         / ignoring (sloth_window)
-        count_over_time(slo:sli_error:ratio_rate5m{sloth_id="svc01-slo02", sloth_service="svc01", sloth_slo="slo02"}[30d])
+        sum(count_over_time(slo:sli_error:ratio_rate5m{sloth_id="svc01-slo02", sloth_service="svc01", sloth_slo="slo02"}[30d]))
       labels:
         sloth_window: 30d
       record: slo:sli_error:ratio_rate30d
