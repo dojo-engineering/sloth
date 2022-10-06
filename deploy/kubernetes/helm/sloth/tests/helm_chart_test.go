@@ -328,14 +328,14 @@ func TestChartConfigMap(t *testing.T) {
 		"A chart without values should not render a configmap.": {
 			name:       "sloth",
 			valuesFile: "testdata/input/default.yaml",
-			expErr: true,
+			expErr:     true,
 		},
 
 		"A chart with custom values should render correctly.": {
 			name:       "test",
 			valuesFile: "testdata/input/custom.yaml",
 			namespace:  "custom",
-			values:     map[string]string{
+			values: map[string]string{
 				"customSloConfig.enabled": "true",
 			},
 			expTplFile: "testdata/output/configmap_slo_config.yaml",
